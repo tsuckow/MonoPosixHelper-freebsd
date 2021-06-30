@@ -22,6 +22,7 @@ jobs:
       with:
         envs: 'MYTOKEN2'
         usesh: true
+        sync: sshfs
         prepare: pkg install -y curl
         run: |
           pwd
