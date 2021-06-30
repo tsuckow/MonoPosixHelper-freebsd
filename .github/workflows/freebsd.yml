@@ -10,6 +10,12 @@ jobs:
       MYTOKEN2: "value2"
     steps:
     - uses: actions/checkout@v2
+    - name: Checkout mono
+      uses: actions/checkout@v2
+      with:
+        repository: mono/mono
+        ref: mono-5.10.1.57
+        path: mono
     - name: Test in FreeBSD
       id: test
       uses: vmactions/freebsd-vm@v0.1.4
