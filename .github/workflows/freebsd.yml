@@ -18,7 +18,7 @@ jobs:
         path: mono
     - name: Test in FreeBSD
       id: test
-      uses: vmactions/freebsd-vm@v0.1.4
+      uses: vmactions/freebsd-vm@v0.1.5
       with:
         envs: 'MYTOKEN2'
         usesh: true
