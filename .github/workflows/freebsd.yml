@@ -23,10 +23,13 @@ jobs:
         envs: 'MYTOKEN2'
         usesh: true
         sync: sshfs
-        prepare: pkg install -y curl
+        prepare: pkg install -y curl libinotify git cmake ninja
         run: |
           pwd
           ls -lah
           whoami
           env
           freebsd-version
+          git clone https://github.com/mono/mono.posix.git monoposix/
+          cd monoposix/
+          ./build.sh
