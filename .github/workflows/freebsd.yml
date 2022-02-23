@@ -23,7 +23,7 @@ jobs:
         envs: 'MYTOKEN2'
         usesh: true
         sync: sshfs
-        prepare: pkg install -y curl libinotify git cmake ninja
+        prepare: pkg install -y curl libinotify git cmake ninja bash
         run: |
           pwd
           ls -lah
