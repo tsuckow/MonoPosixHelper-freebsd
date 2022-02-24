@@ -16,7 +16,7 @@ jobs:
         repository: mono/mono
         ref: mono-5.10.1.57
         path: mono
-    - name: Test in FreeBSD
+    - name: Build native FreeBSD lib
       id: test
       uses: vmactions/freebsd-vm@v0.1.5
       with:
@@ -34,3 +34,13 @@ jobs:
           cd monoposix/
           ls -la
           bash build.sh
+    - name: Save Artifacts x64
+      uses: actions/upload-artifact@v2
+      with:
+        name: libMono-x64
+        path: monoposix/artifacts/host-freebsd-x64-release/libMono.Unix.so
+    - name: Save Artifacts arm
+      uses: actions/upload-artifact@v2
+      with:
+        name: libMono-arm
+        path: monoposix/artifacts/host-freebsd-arm-release/libMono.Unix.so
