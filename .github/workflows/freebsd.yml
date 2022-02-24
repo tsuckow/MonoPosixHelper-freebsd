@@ -34,13 +34,16 @@ jobs:
           cd monoposix/
           ls -la
           bash build.sh
+          ls -lah artifacts/host-freebsd-x64-release/
     - name: Save Artifacts x64
       uses: actions/upload-artifact@v2
       with:
         name: libMono-x64
         path: monoposix/artifacts/host-freebsd-x64-release/libMono.Unix.so
+        if-no-files-found: error
     - name: Save Artifacts arm
       uses: actions/upload-artifact@v2
       with:
         name: libMono-arm
         path: monoposix/artifacts/host-freebsd-arm-release/libMono.Unix.so
+        if-no-files-found: error
