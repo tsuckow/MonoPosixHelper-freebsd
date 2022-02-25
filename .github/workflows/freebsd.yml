@@ -45,7 +45,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore MonoPosix.freebsd.sln
     - name: Build
-      run: dotnet build --no-restore MonoPosix.freebsd.sln
+      run: dotnet build --configuration Release --no-restore MonoPosix.freebsd.sln
     - name: Save Artifacts nuget
       uses: actions/upload-artifact@v2
       with:
