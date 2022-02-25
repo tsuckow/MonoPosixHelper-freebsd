@@ -3,11 +3,9 @@ name: FreeBSD
 on: [push]
 
 jobs:
-  testfreebsd:
+  build:
     runs-on: macos-10.15
-    name: A job to run FreeBSD
-    env:
-      MYTOKEN2: "value2"
+    name: A build freebsd native libraries for Mono.Posix.NETStandard
     steps:
     - uses: actions/checkout@v2
     - name: Checkout mono
@@ -16,11 +14,14 @@ jobs:
         repository: mono/mono
         ref: mono-5.10.1.57
         path: mono
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.101
     - name: Build native FreeBSD lib
       id: test
       uses: vmactions/freebsd-vm@v0.1.5
       with:
-        envs: 'MYTOKEN2'
         usesh: true
         sync: sshfs
         prepare: pkg install -y curl libinotify git cmake ninja bash
@@ -46,4 +47,14 @@ jobs:
       with:
         name: libMono-arm
         path: monoposix/artifacts/host-freebsd-arm-release/lib/libMono.Unix.so
+        if-no-files-found: error
+    - name: Restore dependencies
+      run: dotnet restore MonoPosix.freebsd.csproj
+    - name: Build
+      run: dotnet build --no-restore MonoPosix.freebsd.csproj
+    - name: Save Artifacts nuget
+      uses: actions/upload-artifact@v2
+      with:
+        name: nuget
+        path: bin/Release/MonoPosix.freebsd.1.0.0.nupkg
         if-no-files-found: error

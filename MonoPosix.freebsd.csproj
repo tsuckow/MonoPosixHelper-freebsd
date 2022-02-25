@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>MonoPosix.freebsd</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+	  <Version>1.0.0</Version>
+	  <Description>
+		 Provides the freebsd native libraries for Mono.Posix.NETStandard
+	  </Description>
+	  <PackageTags>native</PackageTags>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <PackageProjectUrl>https://github.com/tsuckow/MonoPosixHelper-freebsd</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mono.Posix.NETStandard" Version="1.0.0" GeneratePathProperty="true" />
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Include="$(PkgMono_Posix_NETStandard)\ref\netstandard2.0\Mono.Posix.NETStandard.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<IncludeInPackage>true</IncludeInPackage>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\freebsd-x64\lib\netstandard2.0</PackagePath>
+		</Content>
+		<Content Include="monoposix\artifacts\host-freebsd-x64-release\lib\libMono.Unix.so">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<IncludeInPackage>true</IncludeInPackage>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\freebsd-x64\native</PackagePath>
+		</Content>
+	</ItemGroup>
+	<ItemGroup>
+		<Content Include="$(PkgMono_Posix_NETStandard)\ref\netstandard2.0\Mono.Posix.NETStandard.dll">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<IncludeInPackage>true</IncludeInPackage>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\freebsd-arm\lib\netstandard2.0</PackagePath>
+		</Content>
+		<Content Include="monoposix\artifacts\host-freebsd-arm-release\lib\libMono.Unix.so">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<IncludeInPackage>true</IncludeInPackage>
+			<Pack>true</Pack>
+			<PackagePath>runtimes\freebsd-arm\native</PackagePath>
+		</Content>
+	</ItemGroup>
+</Project>
