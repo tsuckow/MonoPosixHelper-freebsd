@@ -8,12 +8,6 @@ jobs:
     name: A build freebsd native libraries for Mono.Posix.NETStandard
     steps:
     - uses: actions/checkout@v2
-    - name: Checkout mono
-      uses: actions/checkout@v2
-      with:
-        repository: mono/mono
-        ref: mono-5.10.1.57
-        path: mono
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
