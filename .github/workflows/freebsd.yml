@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     runs-on: macos-10.15
-    name: A build freebsd native libraries for Mono.Posix.NETStandard
+    name: Build
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
@@ -43,12 +43,12 @@ jobs:
         path: monoposix/artifacts/host-freebsd-arm-release/lib/libMono.Unix.so
         if-no-files-found: error
     - name: Restore dependencies
-      run: dotnet restore MonoPosix.freebsd.csproj
+      run: dotnet restore MonoPosix.freebsd.sln
     - name: Build
-      run: dotnet build --no-restore MonoPosix.freebsd.csproj
+      run: dotnet build --no-restore MonoPosix.freebsd.sln
     - name: Save Artifacts nuget
       uses: actions/upload-artifact@v2
       with:
         name: nuget
-        path: bin/Release/MonoPosix.freebsd.1.0.0.nupkg
+        path: nuget/bin/Release/MonoPosix.freebsd.1.0.0.nupkg
         if-no-files-found: error

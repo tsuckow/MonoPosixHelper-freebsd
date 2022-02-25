@@ -23,7 +23,7 @@
 			<Pack>true</Pack>
 			<PackagePath>runtimes\freebsd-x64\lib\netstandard2.0</PackagePath>
 		</Content>
-		<Content Include="monoposix\artifacts\host-freebsd-x64-release\lib\libMono.Unix.so">
+		<Content Include="..\monoposix\artifacts\host-freebsd-x64-release\lib\libMono.Unix.so">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<IncludeInPackage>true</IncludeInPackage>
 			<Pack>true</Pack>
@@ -37,7 +37,7 @@
 			<Pack>true</Pack>
 			<PackagePath>runtimes\freebsd-arm\lib\netstandard2.0</PackagePath>
 		</Content>
-		<Content Include="monoposix\artifacts\host-freebsd-arm-release\lib\libMono.Unix.so">
+		<Content Include="..\monoposix\artifacts\host-freebsd-arm-release\lib\libMono.Unix.so">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 			<IncludeInPackage>true</IncludeInPackage>
 			<Pack>true</Pack>
