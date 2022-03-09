@@ -29,9 +29,9 @@ jobs:
           cd monoposix/
           ls -la
           bash build.sh
-          ls -lah artifacts/host-freebsd-x64-release/
-          cp artifacts/host-freebsd-x64-release/libMono.Unix.so artifacts/host-freebsd-x64-release/libMonoPosixHelper.so
-          cp artifacts/host-freebsd-arm-release/libMono.Unix.so artifacts/host-freebsd-arm-release/libMonoPosixHelper.so
+          ls -lah artifacts/host-freebsd-x64-release/lib/
+          cp artifacts/host-freebsd-x64-release/lib/libMono.Unix.so artifacts/host-freebsd-x64-release/lib/libMonoPosixHelper.so
+          cp artifacts/host-freebsd-arm-release/lib/libMono.Unix.so artifacts/host-freebsd-arm-release/lib/libMonoPosixHelper.so
     - name: Save Artifacts x64
       uses: actions/upload-artifact@v2
       with:
