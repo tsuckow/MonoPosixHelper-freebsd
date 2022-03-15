@@ -25,6 +25,9 @@ jobs:
           whoami
           env
           freebsd-version
+          ( cd /usr/src; git remote --v )
+          mv /usr/src /usr/src.bak
+          git clone --branch releng/13.0 https://git.FreeBSD.org/src.git /usr/src
           git clone https://github.com/mono/mono.posix.git monoposix/
           cd monoposix/
           ls -la
