@@ -28,7 +28,11 @@ jobs:
           ( cd /usr/src; git remote --v )
           mv /usr/src /usr/src.bak
           git clone --branch releng/13.0 https://git.FreeBSD.org/src.git /usr/src
+          ls -l /usr/src/sys/sys/extattr.h
           export CXXFLAGS="$CXXFLAGS -I/usr/src/sys/"
+          export CFLAGS="$CFLAGS -I/usr/src/sys/"
+          echo $CXXFLAGS
+          echo $CFLAGS
           git clone https://github.com/mono/mono.posix.git monoposix/
           cd monoposix/
           ls -la
