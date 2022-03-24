@@ -33,6 +33,8 @@ jobs:
           export CFLAGS="$CFLAGS -I/usr/src/sys/"
           echo $CXXFLAGS
           echo $CFLAGS
+          echo "set(CMAKE_REQUIRED_INCLUDES /usr/src/sys/)" > toolchain.cmake
+          export CMAKE_TOOLCHAIN_FILE=~/toolchain.cmake
           git clone https://github.com/mono/mono.posix.git monoposix/
           cd monoposix/
           ls -la
