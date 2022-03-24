@@ -33,11 +33,10 @@ jobs:
           export CFLAGS="$CFLAGS -I/usr/src/sys/"
           echo $CXXFLAGS
           echo $CFLAGS
-          echo "set(CMAKE_REQUIRED_INCLUDES /usr/src/sys/)" > toolchain.cmake
-          export CMAKE_TOOLCHAIN_FILE=~/toolchain.cmake
           git clone https://github.com/mono/mono.posix.git monoposix/
           cd monoposix/
           ls -la
+          sed -i '1s;^;set(CMAKE_REQUIRED_INCLUDES /usr/src/sys/)\n;' CMakeLists.txt
           bash build.sh
           ls -lah artifacts/host-freebsd-x64-release/lib/
           cp artifacts/host-freebsd-x64-release/lib/libMono.Unix.so artifacts/host-freebsd-x64-release/lib/libMonoPosixHelper.so
