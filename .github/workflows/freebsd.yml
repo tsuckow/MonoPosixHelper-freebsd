@@ -27,13 +27,15 @@ jobs:
           freebsd-version
           ( cd /usr/src; git remote --v )
           mv /usr/src /usr/src.bak
-          git clone --branch releng/13.0 https://git.FreeBSD.org/src.git /usr/src
+          # releng/13.0  https://git.FreeBSD.org/src.git
+          git clone --depth=1 --single-branch --branch extattr_13.0 https://github.com/tsuckow/freebsd-src.git /usr/src
           ls -l /usr/src/sys/sys/extattr.h
           export CXXFLAGS="$CXXFLAGS -I/usr/src/sys/"
           export CFLAGS="$CFLAGS -I/usr/src/sys/"
           echo $CXXFLAGS
           echo $CFLAGS
-          git clone https://github.com/mono/mono.posix.git monoposix/
+          #  https://github.com/mono/mono.posix.git
+          git clone --branch freebsd https://github.com/tsuckow/mono.posix.git monoposix/
           cd monoposix/
           ls -la
           sed -i.bak '1s;^;set(CMAKE_REQUIRED_INCLUDES /usr/src/sys/)\n;' src/native/CMakeLists.txt
